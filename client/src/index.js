@@ -1,12 +1,23 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from "react";
+import ReactDOM from "react-dom";
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import Chatter from "./components/Chatter";
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
-serviceWorker.unregister();
+import "./index.css";
+
+function App() {
+  return (
+    <div className="main">
+      <div className="AppTitle">
+        <h1>Mr. World Wide</h1>
+        <h2>Bring it on...!</h2>
+      </div>
+      <div>
+        <Chatter endpoint="http://142.93.215.49:5001" />
+      </div>
+    </div>
+  );
+}
+
+const rootElement = document.getElementById("root");
+ReactDOM.render(<App />, rootElement);
