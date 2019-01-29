@@ -14,7 +14,7 @@ function App() {
         <h2 className="index-title">I'm Mr. KLU World Wide</h2>
       </div>
       <div>
-        <Chatter endpoint="http://142.93.215.49:5000" />
+        <Chatter endpoint="http://0.0.0.0:5000" />
       </div>
     </div>
   );
