@@ -26,7 +26,7 @@ componentDidUpdate() {
 
   renderLive = () => {
     return this.props.messages.map(({from, msg}) => {
-      return (<div key={from+msg} className="message"><span className="message-from">{from}:</span> <p className="message-text">{msg}</p></div>)
+      return (<div><div key={from+msg} className="message"><span className="message-from">{from}:</span> <p className="message-text">{msg}</p></div><div className="hrx-xs"/></div>)
     })
   };
 

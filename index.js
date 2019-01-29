@@ -72,7 +72,7 @@ io.on("connection", socket => {
     setTimeout(() => {
         socket.emit(
         'newMessage',
-        {from: 'Shas', msg:`Welcome to ${params.room} `}
+        {from: 'Shas (Admin)', msg:`Welcome to ${params.room} Channel.`}
       );
      }, 800)
 

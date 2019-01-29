@@ -5,7 +5,7 @@ class Channels extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      channels : ['GENERAL', 'FED', 'CL', 'TRANSPORT']
+      channels : ['GENERAL', 'FED', 'CL', 'TRANSPORT', 'CONVO `19',]
     }
     
   }
