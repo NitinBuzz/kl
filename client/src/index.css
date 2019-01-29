@@ -4,7 +4,7 @@ body {
   background-color: #36393F;
   color: #fcfcfc;
   margin: 0;
-  border-top: 32px solid #f26522;
+  border-top: 48px solid #f26522;
   border-left: 48px solid #202225;
   height: 95vh;
   overflow: visible;
@@ -15,9 +15,41 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.top-text {
+  top: -6px;
+  position: absolute;
+  font-weight: 600;
+}
+
+@media only screen and (min-width: 750px) {
+  .top-right-text {
+    right: 10px;
+    top: -6px;
+    position: absolute;
+    font-weight: 600;
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  .top-right-text {
+    right: 10px;
+    top: -6px;
+    display: none;
+    position: absolute;
+    font-weight: 0;
+  }
+}
+
+
 .AppTitle {
   font-family: sans-serif;
   text-align: center;
+}
+
+.index-title {
+  color: #7289DA;
+    font-size: x-large;
+    font-weight: 700;
 }
 
 @media only screen and (min-width: 750px) {
