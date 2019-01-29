@@ -12,7 +12,7 @@ const con = mongoose.connect("mongodb://nin:react365@ds117965.mlab.com:17965/klu
 
 var Schema = mongoose.Schema;
 
-var SomeModelSchema = newheroku logs --tail Schema({
+var SomeModelSchema = new Schema({
   from: String,
   msg: String,
   room: String
@@ -89,12 +89,12 @@ io.on("connection", socket => {
 });
 
 if (process.env.NODE_ENV === 'production') {
-//   app.use(express.static('client/build'));
+  app.use(express.static('client/build'));
   const path = require('path');
   app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
   });
-//    server.use((req, res) => res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html')));
+   server.use((req, res) => res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html')));
 }
 
 const PORT = process.env.PORT || 5000;
