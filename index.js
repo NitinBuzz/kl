@@ -74,7 +74,7 @@ io.on("connection", socket => {
         'newMessage',
         {from: 'Shas', msg:`Welcome to ${params.room} `}
       );
-     }, 1500)
+     }, 800)
 
     socket.broadcast
       .to(params.room)
@@ -98,6 +98,6 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-const PORT = process.env.PORT || 5010;
+const PORT = process.env.PORT || 5000;
 
 server.listen(PORT, () => console.log(`Listening on port ${PORT}`));

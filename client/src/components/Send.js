@@ -19,16 +19,24 @@ class Send extends Component {
 
   renderSend = () => {
     return (
-      <div>
+      <div className="form">
+      <div className="hrx" />
         <form
           onSubmit={e => {
             e.preventDefault();
-            this.props.sendMessage(this.state.msg);
+            if (this.state.msg.trim().length > 1){
+             this.props.sendMessage(this.state.msg);
+            }
+            
         // post msg to group
           }}
         >
           <input
+            className="message-input"
             type="text"
+            required
+            placeholder="Message"
+            minLength={2}
             onChange={e => {
               this.handleUpdate(e.target.value);
             }}

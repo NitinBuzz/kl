@@ -4,6 +4,10 @@ import React, { Component } from "react";
 class Channels extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      channels : ['GENERAL', 'FED', 'CL', 'TRANSPORT']
+    }
+    
   }
 
   componentDidMount() {}
@@ -14,21 +18,18 @@ class Channels extends Component {
     this.props.selectChannel(channel);
   };
 
+renderChannelList = () => {
+ let list = this.state.channels.map((item) => {
+    return <div key={item} className="channel-name" onClick={e => this.handleClick(item)}><span className="channel-hash">#</span><span className="channel-text">{item}</span></div>
+   });
+  return list;
+}
+
   renderChannels = () => {
     return (
       <div className="channelList">
-        <div id="GENERAL" onClick={e => this.handleClick("GENERAL")}>
-          #General
-        </div>
-        <div id="FED" onClick={e => this.handleClick("FED")}>
-          #FED
-        </div>
-        <div id="CL" onClick={e => this.handleClick("CL")}>
-          #CL
-        </div>
-        <div id="TRANSPORT" onClick={e => this.handleClick("TRANSPORT")}>
-          #Transport
-        </div>
+        <div className="channels-head">Channels</div>
+           {this.renderChannelList()}
       </div>
     );
   };

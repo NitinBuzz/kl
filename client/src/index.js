@@ -13,7 +13,7 @@ function App() {
         <h2>Bring it on...!</h2>
       </div>
       <div>
-        <Chatter messages={[]} name="nitin" endpoint="http://142.93.215.49:5010" />
+        <Chatter messages={[]} name="nitin" endpoint="http://142.93.215.49:5000" />
       </div>
     </div>
   );

@@ -12,17 +12,18 @@ class Chatter extends Component {
     super(props);
     this.state = {
       channel: "GENERAL",
+      oldChannel: "",
       messages: [],
     };
   }
 
   componentDidMount() {
     socket = socketIOClient(this.props.endpoint);
-    console.log("end ", socket);
+//     console.log("end ", socket);
 //     this.setState({messages: this.props.messages})
     this.initClientJoin();
     socket.on('newMessage', message =>  {
-      console.log(`got a message from server ${JSON.stringify(message)}`);
+//       console.log(`got a message from server ${JSON.stringify(message)}`);
       this.updateLive(message);
      });     
   }
@@ -30,13 +31,13 @@ class Chatter extends Component {
   initClientJoin = () => {
     socket.emit('join', {name: this.props.name, room: this.state.channel}); 
     axios.post("/getRecords" , {room: this.state.channel}).then(response => {
-      console.log(`resp --- ${JSON.stringify(response.data)}`);
+//       console.log(`resp --- ${JSON.stringify(response.data)}`);
        this.setState({messages: response.data})
      });
   }
 
   componentWillUnmount() {
-    console.log("unmount");
+//     console.log("unmount");
     if (socket && socket.emit) {
       socket.emit("disconnect");
     }
@@ -44,9 +45,12 @@ class Chatter extends Component {
 
   selectChannel = channelToSwitch => {
     if (this.state.channel !== channelToSwitch) {
-      this.setState({ channel: channelToSwitch }, () => {
-        this.initClientJoin();
+        this.setState({ oldChannel : this.state.channel }, () => {
+          this.setState({ channel: channelToSwitch }, () => {
+            this.initClientJoin();
+          });
       });
+      
     }
   };
 
