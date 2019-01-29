@@ -29,7 +29,9 @@ body {
 }
 
 .liveContainer {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   border: 2px solid cadetblue;
   margin-left: 10px;
   padding-left: 10px;

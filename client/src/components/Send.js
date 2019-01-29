@@ -19,24 +19,26 @@ class Send extends Component {
 
   renderSend = () => {
     return (
-      <form
-        onSubmit={e => {
-          e.preventDefault();
-          // post msg to group
-        }}
-      >
-        <input
-          type="text"
-          onChange={e => {
-            this.handleUpdate(e.target.value);
+      <div>
+        <form
+          onSubmit={e => {
+            e.preventDefault();
+            this.props.sendMessage(this.state.msg);
+        // post msg to group
           }}
-        />
-      </form>
+        >
+          <input
+            type="text"
+            onChange={e => {
+              this.handleUpdate(e.target.value);
+            }}
+          />
+        </form>
+      </div>
     );
   };
 
   render() {
-    console.log(`send`);
     return <div className="">{this.renderSend()}</div>;
   }
 }
