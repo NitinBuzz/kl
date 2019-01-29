@@ -80,7 +80,7 @@ io.on("connection", socket => {
       .to(params.room)
       .emit(
         'newMessage',
-        {user: 'Admin', text: `${params.name} has joined `}
+        {from: 'Admin', msg: `${params.name} has joined `}
       );
   });
   
