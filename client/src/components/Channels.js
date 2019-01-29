@@ -26,12 +26,16 @@ renderChannelList = () => {
 }
 
   renderChannels = () => {
-    return (
-      <div className="channelList">
-        <div className="channels-head">Channels</div>
-           {this.renderChannelList()}
-      </div>
-    );
+    if (this.props.render) {
+      return (
+        <div className="channelList">
+          <div className="channels-head">Channels</div>
+             {this.renderChannelList()}
+        </div>
+      );
+    } else {
+      return <React.Fragment />
+    }
   };
 
   render() {

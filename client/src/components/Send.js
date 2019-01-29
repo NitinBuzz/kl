@@ -18,32 +18,40 @@ class Send extends Component {
   };
 
   renderSend = () => {
-    return (
-      <div className="form">
-      <div className="hrx" />
-        <form
-          onSubmit={e => {
-            e.preventDefault();
-            if (this.state.msg.trim().length > 1){
-             this.props.sendMessage(this.state.msg);
-            }
-            
-        // post msg to group
-          }}
-        >
-          <input
-            className="message-input"
-            type="text"
-            required
-            placeholder="Message"
-            minLength={2}
-            onChange={e => {
-              this.handleUpdate(e.target.value);
+    if (this.props.render) {
+      return (
+        <div className="form">
+        <div className="hrx" />
+          <form
+            onSubmit={e => {
+              e.preventDefault();
+              if (this.state.msg.trim().length > 1){
+               this.props.sendMessage(this.state.msg);
+               this.setState({ msg: ''})
+              } else {
+                this.setState({ msg: ''})
+              }
+
+          // post msg to group
             }}
-          />
-        </form>
-      </div>
-    );
+          >
+            <input
+              className="message-input"
+              type="text"
+              required
+              placeholder="Message"
+              value={this.state.msg}
+              minLength={2}
+              onChange={e => {
+                this.handleUpdate(e.target.value);
+              }}
+            />
+          </form>
+        </div>
+      );
+    } else {
+      return <React.Fragment />
+    }
   };
 
   render() {

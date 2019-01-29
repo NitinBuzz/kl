@@ -25,9 +25,13 @@ componentDidUpdate() {
 
 
   renderLive = () => {
-    return this.props.messages.map(({from, msg}) => {
-      return (<div><div key={from+msg} className="message"><span className="message-from">{from}:</span> <p className="message-text">{msg}</p></div><div className="hrx-xs"/></div>)
-    })
+     if (this.props.render) {
+      return this.props.messages.map(({from, msg}) => {
+        return (<div><div key={from+msg} className="message"><span className="message-from">{from}:</span> <p className="message-text">{msg}</p></div><div className="hrx-xs"/></div>)
+      })
+    } else {
+      return <React.Fragment />
+    }
   };
 
   render() {
@@ -35,7 +39,7 @@ componentDidUpdate() {
     return (
       <div className="liveContainer">
         <div ref={(el) => { this.messagesContainer = el; }} className="live-chatbox">{this.renderLive()}</div>
-        <Send sendMessage = {this.props.sendMessage}/>
+        <Send render={this.props.render} sendMessage = {this.props.sendMessage}/>
       </div>
     );
   }
