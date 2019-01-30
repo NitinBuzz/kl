@@ -3,6 +3,7 @@ var express = require("express");
 const http = require("http");
 const socketIo = require("socket.io");
 const axios = require("axios");
+const path = require('path');
 var moment = require("moment");
 
 const bodyParser = require('body-parser');
@@ -30,12 +31,11 @@ let pullDocs = (room) => {
 };
 
 var app = express();
-app.use(bodyParser.json());
-const router = express.Router();
-router.get("/", (req, res) => {
+// const router = express.Router();
+app.get("/", (req, res) => {
   res.send({ response: "I am alive" }).status(200);
 });
-router.post("/getRecords", function(req, res) {
+app.post("/getRecords", function(req, res) {
   console.log(req.body);
   pullDocs(req.body.room).then(docs => {
     res.contentType("application/json");
@@ -45,12 +45,12 @@ router.post("/getRecords", function(req, res) {
 });
 
 
-app.use(router);
+
 
 app.use(bodyParser.json());
 const server = http.createServer(app);
 const io = socketIo(server);
-
+// app.use(express.static(path.resolve(__dirname, 'client', 'build', 'index.html')));
 io.on("connection", socket => {
   console.log("New client connected");
   
@@ -91,7 +91,7 @@ io.on("connection", socket => {
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));
   const path = require('path');
-  app.get('*', (req, res) => {
+  server.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
   });
 //    server.use((req, res) => res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html')));
