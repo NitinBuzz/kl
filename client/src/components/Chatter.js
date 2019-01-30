@@ -6,7 +6,7 @@ import axios from "axios";
 import Channels from "./Channels";
 import Live from "./Live";
 
-// let socket = {};
+const socket = io('https://kluworldwide.herokuapp.com');
 class Chatter extends Component {
   constructor(props) {
     super(props);
@@ -23,7 +23,7 @@ class Chatter extends Component {
   componentDidMount() {
 //     socket = socketIOClient(this.props.endpoint);
 //     var socket = io();
-    var socket = io();
+//     socket = io();
       if(localStorage.getItem('x-name')) {
         
         this.setState({ name: localStorage.getItem('x-name')}, () => {
