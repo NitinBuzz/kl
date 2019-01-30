@@ -36,26 +36,14 @@ class Chatter extends Component {
       }
   }
   
-  initClientJoin = (toNewChannel) => {
-//     socket = socketIOClient(this.props.endpoint);
-    
+  initClientJoin = (toNewChannel) => {    
     if (toNewChannel) {
-        //socket.close();
       this.setState({ messages: []}, () => {
         socket.emit('getRecords', {room: this.state.channel});
         setTimeout(()=>{
           socket.emit('join', {name: this.state.name, room: this.state.channel});
         }, 0);
       });
-//         socket.on('newMessage', message =>  {
-//           this.updateLive(message, false);
-//         }); 
-//         socket.emit('join', {name: this.state.name, room: this.state.channel}); 
-//         socket.emit('getRecords', {room: this.state.channel});
-//         socket.on('updateMessages', data => {
-//           console.log(`data is ${JSON.stringify(data)}`);
-//           this.updateLive(data.messagesInRoom, true);
-//         });
     } else {
         socket.on('newMessage', message =>  {
           this.updateLive(message, false);

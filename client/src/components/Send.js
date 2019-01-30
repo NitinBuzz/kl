@@ -14,7 +14,9 @@ class Send extends Component {
   componentWillUnmount() {}
 
   handleUpdate = e => {
-    this.setState({ msg: e.toString().trim() });
+    if (e.trim().length) {
+        this.setState({ msg: e.toString() });
+    }
   };
 
   renderSend = () => {
