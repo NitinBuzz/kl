@@ -6,7 +6,7 @@ import axios from "axios";
 import Channels from "./Channels";
 import Live from "./Live";
 
-let socket = {};
+// let socket = {};
 class Chatter extends Component {
   constructor(props) {
     super(props);
