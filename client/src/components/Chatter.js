@@ -123,7 +123,7 @@ class Chatter extends Component {
           <form
             onSubmit={e => {
               e.preventDefault();
-              if (this.state.name.length > 3) {
+              if (this.state.name.length > 3 && this.state.name.trim().toLowerCase() !== 'admin') {
                  localStorage.setItem('x-name', this.state.name);
                  this.closeModal();
                  this.setState({ shouldRender: true, name: localStorage.getItem('x-name')}, () => {

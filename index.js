@@ -83,7 +83,7 @@ io.on("connection", socket => {
         'newMessage',
         {from: 'Isha (Admin)', msg:`Welcome to ${params.room} Channel.`, admin: true}
       );
-     }, 1200)
+     }, 1000)
 
     socket.broadcast
       .to(params.room)
