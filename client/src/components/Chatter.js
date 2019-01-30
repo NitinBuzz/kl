@@ -45,8 +45,8 @@ class Chatter extends Component {
     socket.emit('getRecords', {room: this.state.channel});
     socket.on('updateMessages', data => {
       console.log(`data is ${JSON.stringify(data)}`);
-      this.updateLive(data, true);
-    })
+      this.updateLive(data.messagesInRoom, true);
+    });
 //     axios.post("/getRecords" , {room: this.state.channel}).then(response => {
 // //       console.log(`resp --- ${JSON.stringify(response.data)}`);
 //        this.setState({messages: response.data})
