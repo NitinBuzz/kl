@@ -55,6 +55,14 @@ const io = socketIo(server);
 io.on("connection", socket => {
   console.log("New client connected");
   
+  socket.on('getRecords', (params) => {
+    pullDocs(params.room).then(docs => {
+      socket.emit('updateMessages', {messagesInRoom: docs});
+    }).catch(() => {
+      socket.emit('updateMessages', {messagesInRoom: []});
+    })
+  });
+  
   socket.on('createMessage', (params) => {
     console.log(`createMessage ${params.room} ${params.from} ${params.msg}`);
     const chat = new SomeModel({

@@ -6,7 +6,7 @@ import axios from "axios";
 import Channels from "./Channels";
 import Live from "./Live";
 
-const socket = io('http://kluworldwide.herokuapp.com');
+const socket = io('https://kluworldwide.herokuapp.com');
 class Chatter extends Component {
   constructor(props) {
     super(props);
@@ -39,13 +39,18 @@ class Chatter extends Component {
   initClientJoin = () => {
 //     socket = socketIOClient(this.props.endpoint);
     socket.on('newMessage', message =>  {
-      this.updateLive(message);
+      this.updateLive(message, false);
     }); 
     socket.emit('join', {name: this.state.name, room: this.state.channel}); 
-    axios.post("/getRecords" , {room: this.state.channel}).then(response => {
-//       console.log(`resp --- ${JSON.stringify(response.data)}`);
-       this.setState({messages: response.data})
-     });
+    socket.emit('getRecords', {room: this.state.channel});
+    socket.on('updateMessages', data => {
+      console.log(`data is ${JSON.stringify(data)}`);
+      this.updateLive(data, true);
+    })
+//     axios.post("/getRecords" , {room: this.state.channel}).then(response => {
+// //       console.log(`resp --- ${JSON.stringify(response.data)}`);
+//        this.setState({messages: response.data})
+//      });
   }
 
   componentWillUnmount() {
@@ -71,12 +76,18 @@ class Chatter extends Component {
     socket.emit('createMessage', {room:this.state.channel ,from: this.state.name, msg: text})
   }
   
-  updateLive = (newOne) => {
-    let messagesX = this.state.messages;
-    messagesX.push(newOne);
-    this.setState({
-      messages: messagesX
-    })
+  updateLive = (newOne, flush=false) => {
+    if (flush) {
+      this.setState({
+        messages: newOne
+      });
+    } else {
+        let messagesX = this.state.messages;
+        messagesX.push(newOne);
+        this.setState({
+          messages: messagesX
+        });
+    }
   }
   
    closeModal = () => {
