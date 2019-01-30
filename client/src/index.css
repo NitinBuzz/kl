@@ -110,10 +110,25 @@ body {
   border-left: 4px solid #4F545C;
 }
 
+.admin-message {
+    background-color: #4B443B;
+    padding: 6px;
+  font-size: 85%;
+    padding-left: 4px;
+    margin: 24px;
+    margin-left: 0;
+    border-left: 2px solid #E67E22;
+}
+
 .message-from {
   color: #6673A9;
   font-size: large;
   font-weight: 600;
+}
+
+.admin-message-from {
+      color: #219781;
+    font-weight: 800;
 }
 
 .message-text {

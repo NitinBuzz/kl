@@ -7,6 +7,8 @@ import Channels from "./Channels";
 import Live from "./Live";
 
 const socket = io('https://kluworldwide.herokuapp.com');
+//npm run dev --host 142.93.215.49 --disableHostCheck true
+// const socket = io('http://142.93.215.49:5000');
 class Chatter extends Component {
   constructor(props) {
     super(props);
@@ -51,7 +53,6 @@ class Chatter extends Component {
         socket.emit('join', {name: this.state.name, room: this.state.channel}); 
         socket.emit('getRecords', {room: this.state.channel});
         socket.on('updateMessages', data => {
-          console.log(`data is ${JSON.stringify(data)}`);
           this.updateLive(data.messagesInRoom, true);
         });
     }
@@ -82,7 +83,6 @@ class Chatter extends Component {
   };
 
   sendMessage = (text) => {
-    console.log(text)
     socket.emit('createMessage', {room:this.state.channel ,from: this.state.name, msg: text})
   }
   

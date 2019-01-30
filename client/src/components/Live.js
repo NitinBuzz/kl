@@ -26,8 +26,8 @@ componentDidUpdate() {
 
   renderLive = () => {
      if (this.props.render) {
-      return this.props.messages.map(({from, msg}) => {
-        return (<div><div key={from+msg} className="message"><span className="message-from">{from}:</span> <p className="message-text">{msg}</p></div><div className="hrx-xs"/></div>)
+      return this.props.messages.map(({from, msg, admin}) => {
+        return (<div><div key={from+msg} className={admin ? "admin-message" : "message" }><span className={admin ? "admin-message-from" : "message-from" }>{from}:</span> <p className="message-text">{msg}</p></div><div className="hrx-xs"/></div>)
       })
     } else {
       return <React.Fragment />

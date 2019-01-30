@@ -71,7 +71,7 @@ io.on("connection", socket => {
       msg: params.msg
       });
     chat.save(error => {
-     io.to(params.room).emit('newMessage', {from: params.from , msg: params.msg});
+     io.to(params.room).emit('newMessage', {from: params.from , msg: params.msg, admin: false});
       });
   });
   
@@ -81,15 +81,15 @@ io.on("connection", socket => {
     setTimeout(() => {
         socket.emit(
         'newMessage',
-        {from: 'Shas (Admin)', msg:`Welcome to ${params.room} Channel.`}
+        {from: 'Isha (Admin)', msg:`Welcome to ${params.room} Channel.`, admin: true}
       );
-     }, 800)
+     }, 1200)
 
     socket.broadcast
       .to(params.room)
       .emit(
         'newMessage',
-        {from: 'Admin', msg: `${params.name} has joined `}
+        {from: 'Isha (Admin)', msg: `${params.name} has joined `, admin: true}
       );
   });
   
