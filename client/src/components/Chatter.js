@@ -22,7 +22,7 @@ class Chatter extends Component {
 
   componentDidMount() {
 //     socket = socketIOClient(this.props.endpoint);
-    var socket = io();
+//     var socket = io();
       if(localStorage.getItem('x-name')) {
         
         this.setState({ name: localStorage.getItem('x-name')}, () => {
