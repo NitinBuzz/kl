@@ -6,9 +6,9 @@ import axios from "axios";
 import Channels from "./Channels";
 import Live from "./Live";
 
-const socket = io('https://kluworldwide.herokuapp.com');
+// const socket = io('https://kluworldwide.herokuapp.com');
 //npm run dev --host 142.93.215.49 --disableHostCheck true
-// const socket = io('http://142.93.215.49:5000');
+const socket = io('http://142.93.215.49:5000');
 class Chatter extends Component {
   constructor(props) {
     super(props);
