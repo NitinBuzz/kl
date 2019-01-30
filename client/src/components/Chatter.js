@@ -6,7 +6,7 @@ import axios from "axios";
 import Channels from "./Channels";
 import Live from "./Live";
 
-const socket = io('https://kluworldwide.herokuapp.com');
+const socket = io('http://kluworldwide.herokuapp.com');
 class Chatter extends Component {
   constructor(props) {
     super(props);
