@@ -28,7 +28,7 @@ class Chatter extends Component {
         
         this.setState({ name: localStorage.getItem('x-name')}, () => {
           this.setState({ shouldRender: true }, () => {
-            this.initClientJoin();
+            this.initClientJoin(false);
           });
         });
       } else {
@@ -36,17 +36,39 @@ class Chatter extends Component {
       }
   }
   
-  initClientJoin = () => {
+  initClientJoin = (toNewChannel) => {
 //     socket = socketIOClient(this.props.endpoint);
-    socket.on('newMessage', message =>  {
-      this.updateLive(message, false);
-    }); 
-    socket.emit('join', {name: this.state.name, room: this.state.channel}); 
-    socket.emit('getRecords', {room: this.state.channel});
-    socket.on('updateMessages', data => {
-      console.log(`data is ${JSON.stringify(data)}`);
-      this.updateLive(data.messagesInRoom, true);
-    });
+    
+    if (toNewChannel) {
+        //socket.close();
+      this.setState({ messages: []}, () => {
+        socket.emit('getRecords', {room: this.state.channel});
+        setTimeout(()=>{
+          socket.emit('join', {name: this.state.name, room: this.state.channel});
+        }, 0);
+      });
+//         socket.on('newMessage', message =>  {
+//           this.updateLive(message, false);
+//         }); 
+//         socket.emit('join', {name: this.state.name, room: this.state.channel}); 
+//         socket.emit('getRecords', {room: this.state.channel});
+//         socket.on('updateMessages', data => {
+//           console.log(`data is ${JSON.stringify(data)}`);
+//           this.updateLive(data.messagesInRoom, true);
+//         });
+    } else {
+        socket.on('newMessage', message =>  {
+          this.updateLive(message, false);
+        }); 
+        socket.emit('join', {name: this.state.name, room: this.state.channel}); 
+        socket.emit('getRecords', {room: this.state.channel});
+        socket.on('updateMessages', data => {
+          console.log(`data is ${JSON.stringify(data)}`);
+          this.updateLive(data.messagesInRoom, true);
+        });
+    }
+    
+    
 //     axios.post("/getRecords" , {room: this.state.channel}).then(response => {
 // //       console.log(`resp --- ${JSON.stringify(response.data)}`);
 //        this.setState({messages: response.data})
@@ -64,7 +86,7 @@ class Chatter extends Component {
     if (this.state.channel !== channelToSwitch) {
         this.setState({ oldChannel : this.state.channel }, () => {
           this.setState({ channel: channelToSwitch }, () => {
-            this.initClientJoin();
+            this.initClientJoin(true);
           });
       });
       
@@ -117,7 +139,7 @@ class Chatter extends Component {
                  localStorage.setItem('x-name', this.state.name);
                  this.closeModal();
                  this.setState({ shouldRender: true, name: localStorage.getItem('x-name')}, () => {
-                  this.initClientJoin();
+                  this.initClientJoin(false);
                 }) 
               }
             }}
