@@ -33,7 +33,7 @@ let pullDocs = (room) => {
 var app = express();
 // const router = express.Router();
 app.get("/", (req, res) => {
-  res.send({ response: "I am alive" }).status(200);
+  res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
 });
 app.post("/getRecords", function(req, res) {
   console.log(req.body);
@@ -94,7 +94,7 @@ if (process.env.NODE_ENV === 'production') {
   app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
   });
-   app.use((req, res) => res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html')));
+//    app.use((req, res) => res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html')));
 }
 
 const PORT = process.env.PORT || 5000;
