@@ -20,7 +20,7 @@ class Channels extends Component {
 
 renderChannelList = () => {
  let list = this.state.channels.map((item) => {
-    return <div key={item} className="channel-name" onClick={e => this.handleClick(item)}><span className="channel-hash">#</span><span className="channel-text">{item}</span></div>
+    return <div key={item} className={item === this.props.currentChannel ? "current-channel channel-name" : "channel-name" } onClick={e => this.handleClick(item)}><span className="channel-hash">#</span><span className="channel-text">{item}</span></div>
    });
   return list;
 }

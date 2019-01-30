@@ -156,7 +156,7 @@ class Chatter extends Component {
       <div className="">
         {this.state.showModel && this.renderModal()}
         <div className="chatterContainer">
-          <Channels render={this.state.shouldRender} selectChannel={this.selectChannel} />
+          <Channels render={this.state.shouldRender} currentChannel={this.state.channel} selectChannel={this.selectChannel} />
           <Live render={this.state.shouldRender} messages={this.state.messages} channel={this.state.channel} updateLive={this.updateLive} sendMessage={this.sendMessage} />
         </div>
       </div>
