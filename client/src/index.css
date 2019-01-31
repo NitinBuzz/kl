@@ -257,7 +257,7 @@ code {
   display: block; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
+  padding-top:  15%; /* Location of the box */
   left: 0;
   top: 0;
   width: 100%; /* Full width */
@@ -269,12 +269,14 @@ code {
 
 /* Modal Content */
 .modal-content {
-  border-left: 3px solid #faa61a;
-  background-color: #33353c;
-  color: #fcfcfc;
-  margin: auto;
-  padding: 20px;
-  width: 80%;
+    border-left: 3px solid #faa61a;
+    background-color: #33353c;
+    color: #fcfcfc;
+    margin: auto;
+    padding: 20px;
+    padding-left: 15px;
+    width: 20%;
+    padding-top: 5px;
 }
 
 /* The Close Button */

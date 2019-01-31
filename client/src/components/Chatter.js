@@ -114,7 +114,9 @@ class Chatter extends Component {
           <span
             className="close"
             onClick={() => {
-              this.closeModal();
+            if (localStorage.getItem('x-name')) {
+                this.closeModal();
+                }
             }}
           >
             &times;
@@ -132,12 +134,11 @@ class Chatter extends Component {
               }
             }}
           >
-            Name:
-            <br />
             <input
               type="text"
               name="name"
               minLength={4}
+              placeholder="name"
               required
               onChange={e => {this.setState({name: e.target.value.trim()})}}
               autocomplete="off"
