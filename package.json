@@ -20,6 +20,7 @@
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "concurrently": "^4.1.0",
+    "emoji-js": "^3.4.1",
     "express": "^4.16.4",
     "moment": "^2.24.0",
     "mongoose": "^5.4.7",

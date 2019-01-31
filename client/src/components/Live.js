@@ -1,8 +1,8 @@
 // import packages
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-
 import Send from "./Send";
+import Message from "./Message";
 
 class Live extends Component {
   constructor(props) {
@@ -28,7 +28,7 @@ componentDidUpdate() {
      if (this.props.render) {
       return this.props.messages.map(({from, msg, room, admin}) => {
         if (room === this.props.channel) {
-              return (<div><div key={from+msg} className={admin ? "admin-message" : "message" }><span className={admin ? "admin-message-from" : "message-from" }>{from}:</span> <p className="message-text">{msg}</p></div><div className="hrx-xs"/></div>)
+              return <Message from={from} msg={msg} admin={admin} />
             }
       })
     } else {

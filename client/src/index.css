@@ -113,6 +113,7 @@ body {
   padding-left: 4px;
   margin-left: 0;
   border-left: 4px solid #4F545C;
+  max-height: 70px;
 }
 
 .admin-message {
@@ -137,8 +138,20 @@ body {
 }
 
 .message-text {
+  display: flex;
   color: #CBCCCE;
 }
+
+.reaction-picker {
+      display: flex;
+    flex-direction: column;
+  margin-left: auto;
+}
+
+.emoji-keyboard {
+  z-index: 1;
+}
+
 .message-time {
   font-size: 0.75rem;
   font-weight: 400;
