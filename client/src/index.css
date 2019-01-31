@@ -1,3 +1,7 @@
+* {
+/*   font-family: 'Ubuntu', sans-serif; */
+  font-family: 'Roboto', sans-serif;
+}
 body {
   margin: 0;
   padding: 0;
@@ -47,7 +51,7 @@ body {
 }
 
 .index-title {
-  color: #7289DA;
+  color: #FFFFFF;
     font-size: x-large;
     font-weight: 700;
 }
@@ -74,6 +78,7 @@ body {
 .liveContainer {
   display: flex;
   flex-direction: column;
+  font-family: 'Open Sans', sans-serif;
   justify-content: space-between;
   border: 0px solid cadetblue;
   margin-left: 10px;
@@ -121,7 +126,7 @@ body {
 }
 
 .message-from {
-  color: #6673A9;
+  color: #9156AB;
   font-size: large;
   font-weight: 600;
 }
@@ -175,17 +180,29 @@ body {
 }
 
 .current-channel {
-    padding: 4px;
-    background-color: #42464D;
-    width: 80%;
-    border-left: 3px solid #E47D21;
-      font-weight: 600;
+    padding: 4px!important;
+    background-color: #42464D !important;
+    width: 80%!important;
+    border-left: 3px solid #E47D21!important;
+    font-weight: 600!important;
 }
 
 .channel-name {
   color: #dcddde;
   cursor: pointer;
   margin: 12px 0;
+  height: max-content;
+  width: 90%;
+} 
+
+.channel-name:hover {
+    /* color: aliceblue; */
+    padding: 1px;
+  padding-left: 4px;
+    width: 85%;
+    background-color: #36393F;
+    border-left: 3px solid #9156AB;
+    font-weight: 600;
 }
 .channel-hash {
   color: #7A7C7F;
@@ -195,7 +212,8 @@ body {
     margin-top: 20px;
 }
 .channel-text {
-  
+/*   margin-top: 2px;
+  margin-bottom: 2px; */
 }
 
 .channels-head {
